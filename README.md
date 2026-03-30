@@ -50,6 +50,11 @@ result = sentence.replace(/\Bmartin\B/g, "KK");
 ```
 最後改變成為 "martinis himartin goo gooKKgoo"
 
+## [What does (?: do in a regular expression](https://stackoverflow.com/a/14138202)
+It's a non-capture group, which essentially is the same as using (...), but the content isn't retained (not available as a back reference).
+
+If you're doing something like this: (abc)(?:123)(def) You'll get abc in $1 and def in $2, but 123 will only be matched.
+https://regexr.com/8leu2
 ## string_to_tag
 -string_to_tag
 	change string to tag, e.g. abc=><abc></abc>
