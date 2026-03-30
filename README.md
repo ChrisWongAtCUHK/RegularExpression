@@ -55,6 +55,21 @@ It's a non-capture group, which essentially is the same as using (...), but the 
 
 If you're doing something like this: (abc)(?:123)(def) You'll get abc in $1 and def in $2, but 123 will only be matched.
 https://regexr.com/8leu2
+
+## [RegExp 應用： lookahead , lookbehind](https://darkk6.blogspot.com/2017/03/regexp-lookahead-lookbehind.html)
+例如： 12345 XD Hi12345678ab666666cd987654321
+
+要找出： 12345678 和 666666；但不可以找出 987654321 中的 98765432 或者 87654321
+
+於是我第一個想到的東西就是 Lookahead 和 lookbehind。
+
+先來看一下如果直接使用 \d{6,8} 會取出什麼：[RegExr: Learn, Build, & Test RegEx](https://regexr.com/8leue).  
+可以看到，直接使用 \d{6,8} 是會連後方的 987654321 取出來。
+
+最後我給的的解法是：(?<!\d)\d{6,8}(?!\d)，結果：[RegExr: Learn, Build, & Test RegEx](https://regexr.com/8leuh).  
+重點就在前面的 (?<!\d) 和後面的 (?!\d) 這兩個表示法，他們分別代表的是  
+negative lookbehind 和 negative lookahead
+
 ## string_to_tag
 -string_to_tag
 	change string to tag, e.g. abc=><abc></abc>
